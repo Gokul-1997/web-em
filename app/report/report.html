@@ -189,7 +189,7 @@
                                                 <th>Shift</th>
                                                 <th>Time</th>
                                                 <th>Operator Name</th>
-                                               
+                                                 <th>Operator ID</th>
                                                 <th>Machine Name</th>
                                                <!--  <th>Machine ID </th>   -->                                         
                                                 <th>Run Time(Hrs)</th>
@@ -204,20 +204,19 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in items" ng-click="showme=true">
-                                                <td>{{item.date}}</td>
-                                                <td>{{item.shift_no}}</td>
-                                                <td>{{item.time}}</td>
-                                                <td>{{item.operator_name}}</td>
-                                              <!--   <td>{{item.operator_id}}</td> -->
-
-                                                <td>{{item.machine_name}}</td>
-                                                 <td>{{item.run_time}}</td>
-                                                <td>{{item.idle_time}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.date}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.shift_no}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.time}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.operator_name}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.operator_id}}</td> 
+                                                <td ng-hide="item.duration == 00:00:00">{{item.machine_name}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.run_time}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.idle_time}}</td>
                                                <!--  <td>{{item.reason}}</td> -->
-                                                <td>{{item.stop_time}}</td>  
-                                                <td>{{item.total_time}}</td>                                         
-                                                <td>{{item.actual_shifttime}}</td>
-                                                <td>{{item.utilization}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.stop_time}}</td>  
+                                                <td ng-hide="item.duration == 00:00:00">{{item.total_time}}</td>                                         
+                                                <td ng-hide="item.duration == 00:00:00">{{item.actual_shifttime}}</td>
+                                                <td ng-hide="item.duration == 00:00:00">{{item.utilization}}</td>
                                             </tr>
                                             <!-- <tr ng-show="wise=='Datewise'&&showme">
                                               <td><button class="btn btn-success btn-sm btn_report" style="position: absolute;margin-top: -15px;" ng-click="generate_report(wise)" ng-disabled="isdisabled"><i class="fa fa-share-square" aria-hidden="true"></i> Shift</button></td>
@@ -254,17 +253,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="item in reasonitem  track by $index"  ng-hide="item =='no data'"  ng-click="showme=true">
-                                                <td>{{item.date}}</td>
-                                                <td>{{item.shift_no}}</td>
-                                                <td>{{item.time}}</td>
-                                                <td>{{item.machine_name}}</td>
-                                                 <td>{{item.machine_type}}</td>
-                                                 <td>{{item.operator_name}}</td>
-                                                 <td>{{item.operator_id}}</td>
-                                                <td>{{item.idle_time}}</td>
-                                                <td>{{item.reason}}</td>
-                                                <td>{{item.duration}}</td>  
+                                            <tr ng-repeat="item in reasonitem  track by $index"  ng-hide="item =='no data'" ng-click="showme=true">
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.date}}</td>
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.shift_no}}</td>
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.time}}</td>
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.machine_name}}</td>
+                                                 <td ng-hide="item.duration == '00:00:00'">{{item.machine_type}}</td>
+                                                 <td ng-hide="item.duration == '00:00:00'">{{item.operator_name}}</td>
+                                                 <td ng-hide="item.duration == '00:00:00'">{{item.operator_id}}</td>
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.idle_time}}</td>
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.reason}}</td>
+                                                <td ng-hide="item.duration == '00:00:00'">{{item.duration}}</td>  
                                                <!--  <td>{{item.total}}</td> -->
                                             </tr>
                                             <tr>

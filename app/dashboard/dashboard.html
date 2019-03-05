@@ -335,7 +335,7 @@ font-size: 14px !important;
             <div class="row dashboard-machine" >
               <div ng-repeat="val in cardnames"  class="col-sm-1 dashboard_specs" ng-click="machine_page_redirect(val.machine_id)" data-toggle="modal" data-target="#exampleModalLong">
                 <div class="wrapper data-usage" ng-click="machineclick(y);">
-                  <div class="wrapper_idle" ng-class="{running :val.status =='3' ,stopped :val.status=='100',nodata: val.status == null,idle : val.status != '3' && val.status !='100' && val.status != null}">
+                  <div class="wrapper_idle" ng-class="{running :val.status =='3' ,stopped :val.status=='0',idle: val.status == '1',nodata : val.status != '3' && val.status !='0' && val.status != '1'}">
                     <div class="row d-flex align-items-center">
                       <div class="col-sm-12">
                         <percent-display percent="val.utilization" side="50" colors="#ede7f6 #A179C7"></percent-display>
@@ -367,7 +367,7 @@ font-size: 14px !important;
             <div class="row m-0">
               <div class="col-md-6">
                 <div class="wrapper data-usage">
-                  <div class="wrapper_idle" ng-class="{running :singleres.status =='3' ,stopped :singleres.status=='100',nodata: singleres.status == null,idle : singleres.status != '3' && singleres.status !='100' && singleres.status != null}">
+                  <div class="wrapper_idle" ng-class="{running :singleres.status =='3' ,stopped :singleres.status=='0',idle: singleres.status == '1',nodata : singleres.status != '3' && singleres.status !='0' && singleres.status != '1'}">
                   <h2 class="display h4">
                     <a href=""  onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#fff'">{{singleres.machine_name}}</a>
                   </h2>
@@ -407,21 +407,21 @@ font-size: 14px !important;
                       </tr>
                 <tr>
                   <td class="text-center">
-                    <i class="fa fa-clock-o"></i>
+                    <i class="fa fa-play"></i>
                   </td>
                   <td >Run Time</td>
                   <td>{{singleres.runtime}}</td>
                 </tr>
                 <tr>
                   <td class="text-center">
-                    <i class="fa fa-play"></i>
+                    <i class="fa fa-pass"></i>
                   </td>
                   <td>Idle Time</td>
                   <td>{{singleres.idletime}}</td>
                 </tr>
                 <tr>
                   <td class="text-center">
-                    <i class="fa fa-play"></i>
+                    <i class="fa fa-stop"></i>
                   </td>
                   <td>Stop Time</td>
                   <td>{{singleres.stoptime}}</td>
@@ -432,6 +432,13 @@ font-size: 14px !important;
                   </td>
                   <td>Total Time</td>
                   <td>{{singleres.total}} </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <i class="fa fa-sort-amount-asc" ></i>
+                  </td>
+                  <td>No Data </td>
+                  <td>{{singleres.no_data}} </td>
                 </tr>
               </table>
             </div>

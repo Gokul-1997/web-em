@@ -79,12 +79,11 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   //$interval(tick, 1000);
     
     $scope.currentPath = $location.path();
-//$rootScope.api_url='http://13.127.251.48:81/api/v1/';
-//$rootScope.api_url='http://13.127.251.48:3000/api/v1/';
+
 //$rootScope.api_url='http://13.233.191.144:81/api/v1/';
 $rootScope.api_url='http://192.168.1.48:3001/api/v1/';
 
-//$rootScope.api_url='http://183.82.250.137:4003/api/v1/';
+
 
   $rootScope.EMERALD="EMERALD";
 

@@ -183,7 +183,7 @@
             <th class="th_mch_name">Machine Name</th>
             <th class="th_mch_id">Machine ID</th>
             <th class="th_shift">Shift</th>
-            <th class="th_job">Job Description</th>
+            <th class="th_job">Description</th>
             <th class="th_from">From-To Date</th>
             <th class="th_action">Action</th>
           </tr>
@@ -208,12 +208,12 @@
           <thead ng-click="alocate(operator.id)">
             <tr>
               <th class="th_op_name">{{ operator.operator.name}}</th>
-              <th class="th_op_id">{{ operator.operator.id}}</th>
+              <th class="th_op_id">{{ operator.operator.spec_id}}</th>
               <th class="th_mch_name">{{ operator.machine.machine_type}}</th>
               <th class="th_mch_id">{{ operator.machine.machine_name}}</th>
               <th class="th_shift">{{operator.shift.shift_no}}</th>
               <th class="th_job">{{ operator.description }}</th>
-              <th class="th_from">({{ operator.from_date}}) - ({{ operator.to_date}})</th>
+              <th class="th_from">({{ operator.from_date | date:'dd/MM/yyyy'}}) - ({{ operator.to_date | date:'dd/MM/yyyy'}})</th>
               <th class="th_action">
                 <a class="remove"> <i class="fa fa-trash-o " confirmed-click="delete(operator.id)" ng-confirm-click="Do you want to delete"></i></a>
               </th>
@@ -227,7 +227,7 @@
                 <td>{{ operator.machine.machine_name}}</td>
                 <td>{{operator.shift.shift_no}}</td>
                 <td>{{ operator.description }}</td>
-                <td>{{ operator1.date}}</td>
+                <td>{{ operator1.date | date:'dd/MM/yyyy'}}</td>
                 <td>
                   <a class="edit" data-toggle="modal" ng-show="{{todaydat | date: 'yyyy-MM-dd'}} >= {{operator1.date | date: 'yyyy-MM-dd'}}" data-target="#exampleModalLabel2" title="Edit" ng-click="edit(operator.id,operator1)"> <i class="fa fa-pencil"></i> </a>
                 </td>
