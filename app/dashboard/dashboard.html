@@ -312,33 +312,38 @@ font-size: 14px !important;
        <li><span class="dot_running"></span>Running</li>
        <li><span class="dot_idle"></span>Idle</li>
        <li><span class="dot_stop"></span>Stop</li>
+       <li><span class="dot_no_data"></span>No Data</li>
+
        <!-- <li><span class="dot_nodata"></span>No Data</li> -->
        <!-- <li ng-click="dashboard()" style="cursor:pointer"><i class="fa fa-refresh "></i></li> -->
      </ul>
      <div class="float-right entry_time"><span>Today:</span>{{ clock | date:'dd-MM-yyyy hh:mm:ss a'}}</div>
      </h1>
    </header>
-          <div class="container-fluid">
-       
-
+          <div class="container-fluid" ng-repeat="(key,val) in cardnames.data">
+  
           <div>         
             <div class="row" style="margin-bottom:5px; padding-bottom: 10px; margin-top: 10px;">
               <div style="text-align: left;border-bottom:1px solid #ddd;padding-bottom: 10px;" class="col col-100">Cell - 1 (Rope Chain Machines)</div>
-              <!-- <div style="text-align: right;border-bottom:1px solid #ddd; margin-top: 20px; padding-bottom: 10px;" class="col col-100">
-                  <span style="float:left;font-size:16px">{{key}}</span>
+               <div style="text-align: right;border-bottom:1px solid #ddd; margin-top: 20px; padding-bottom: 10px;" class="col col-100">
+                  <!-- <span style="float:left;font-size:16px">{{key}}</span> -->
+                  <!-- {{cardnames.count[key]}} -->
                   <span class="statusHeader" ng-click="statusfill = ''" style="font-size:14px; color: #f69123" >Machines({{val.length}})</span>
                   <span class="statusHeader" ng-click="statusfill = 3"  style="font-size:14px; color: #396ae2;">Running({{cardnames.count[key].running -- 0}})</span>
-                  <span class="statusHeader" ng-click="statusfill = 0"  style="font-size:14px; color: #396ae2;">Idle({{(cardnames.count[key].idle1) -- (cardnames.count[key].idle)}})</span>
-                  <span class="statusHeader" ng-click="statusfill = 100" style="font-size:14px; color: #396ae2;">Stop({{cardnames.count[key].stop -- 0}})</span>
-              </div> -->
+                  <span class="statusHeader" ng-click="statusfill = 1"  style="font-size:14px; color: #396ae2;">Idle({{cardnames.count[key].idle}})</span>
+                  <span class="statusHeader" ng-click="statusfill = 0" style="font-size:14px; color: #396ae2;">Stop({{cardnames.count[key].stop -- 0}})</span>
+                  <span class="statusHeader" ng-click="statusfill = 1"  style="font-size:14px; color: #396ae2;">No Data({{(cardnames.count[key].no_data) -- (cardnames.count[key].false)}})</span>
+
+              </div> 
              </div>    
             <div class="row dashboard-machine" >
-              <div ng-repeat="val in cardnames"  class="col-sm-1 dashboard_specs" ng-click="machine_page_redirect(val.machine_id)" data-toggle="modal" data-target="#exampleModalLong">
+              <div ng-repeat="x in val"  class="col-sm-1 dashboard_specs" ng-click="machine_page_redirect(x.machine_id)" data-toggle="modal" data-target="#exampleModalLong">
+              
                 <div class="wrapper data-usage" ng-click="machineclick(y);">
-                  <div class="wrapper_idle" ng-class="{running :val.status =='3' ,stopped :val.status=='0',idle: val.status == '1',nodata : val.status != '3' && val.status !='0' && val.status != '1'}">
+                  <div class="wrapper_idle" ng-class="{running :x.status =='3' ,stopped :x.status=='0',idle: x.status == '1',nodata : x.status != '3' && x.status !='0' && x.status != '1'}">
                     <div class="row d-flex align-items-center">
                       <div class="col-sm-12">
-                        <percent-display percent="val.utilization" side="50" colors="#ede7f6 #A179C7"></percent-display>
+                        <percent-display percent="x.utilization" side="50" colors="#ede7f6 #A179C7"></percent-display>
                         <p class="text-center">UTILIZATION</p>
                       </div>
                     
@@ -346,7 +351,7 @@ font-size: 14px !important;
                   </div>
                 </div>
                 <h2 class="display h4">
-                  <a href="" >{{val.machine_name}}</a>
+                  <a href="" >{{x.machine_name}}</a>
                 </h2>
               </div>
             </div>
@@ -433,13 +438,13 @@ font-size: 14px !important;
                   <td>Total Time</td>
                   <td>{{singleres.total}} </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td class="text-center">
                     <i class="fa fa-sort-amount-asc" ></i>
                   </td>
                   <td>No Data </td>
                   <td>{{singleres.no_data}} </td>
-                </tr>
+                </tr> -->
               </table>
             </div>
 
